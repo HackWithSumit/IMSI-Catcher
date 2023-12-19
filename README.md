@@ -55,3 +55,16 @@ Options:
   -z, --mysql           Save observed IMSI values to specified MYSQL DB (copy
                         .env.dist to .env and edit it)
 ```
+
+## What you need
+
+1 PC with Gnu/Linux. Tested with :  
+- debian 10  
+- Ubuntu 20.04/LinuxMint 20+  
+- Kali 2020+  
+  
+1 SDR receiver. Tested with :  
+- [USB DVB-T key (RTL2832U)](https://osmocom.org/projects/sdr/wiki/rtl-sdr) with antenna (less than 15$)  
+- [OsmocomBB phone](https://osmocom.org/projects/baseband/wiki/Phones)  
+- [HackRF](https://greatscottgadgets.com/hackrf/)  
+- [BladeRF](https://www.nuand.com/bladerf-2-0-micro/)
