@@ -68,3 +68,42 @@ Options:
 - [OsmocomBB phone](https://osmocom.org/projects/baseband/wiki/Phones)  
 - [HackRF](https://greatscottgadgets.com/hackrf/)  
 - [BladeRF](https://www.nuand.com/bladerf-2-0-micro/)
+
+Open 2 terminals.  
+  
+In terminal 1  
+```bash
+sudo python3 simple_IMSI-catcher.py -s
+```
+  
+In terminal 2  
+```bash
+grgsm_livemon
+```
+Now, change the frequency until it display, in terminal, something like that :  
+``` 
+15 06 21 00 01 f0 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b
+25 06 21 00 05 f4 f8 68 03 26 23 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b
+49 06 1b 95 cc 02 f8 02 01 9c c8 03 1e 57 a5 01 79 00 00 1c 13 2b 2b
+```
+
+### Wireshark
+
+You can watch GSM packets with wireshark.  
+```bash
+sudo apt install wireshark
+sudo wireshark -k -Y '!icmp && gsmtap' -i lo
+```
+
+### Find frequencies
+ 
+```bash
+grgsm_scanner
+```
+```
+ARFCN:  974, Freq:  925.0M, CID:     2, LAC:   1337, MCC: 208, MNC:  20, Pwr: -41
+ARFCN:  976, Freq:  925.4M, CID:  4242, LAC:   1007, MCC: 208, MNC:  20, Pwr: -45
+```
+Now, you can set the frequency for `grgsm_livemon` :  
+```bash
+grgsm_livemon -f 925.4M
